@@ -1,6 +1,5 @@
 ﻿#include <opencv2/opencv.hpp>
 #include <mpi.h>
-#include <complex>
 
 int mandelbrot(double cr, double ci, int max_iterations) {
    double zr = 0.0, zi = 0.0;
