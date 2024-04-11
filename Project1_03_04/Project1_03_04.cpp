@@ -67,10 +67,10 @@ int main(int argc, char** argv) {
       }
 
       cv::Mat final_image(height, width, CV_8UC3);
-      MPI_Allgather(sub_image.data, (end_row - start_row) * width * 3, MPI_UNSIGNED_CHAR,
-         final_image.data, (end_row - start_row) * width * 3, MPI_UNSIGNED_CHAR,
-         MPI_COMM_WORLD);
-
+      MPI_Gather(sub_image.data, (end_row - start_row) * width * 3, MPI_UNSIGNED_CHAR,
+               final_image.data, (end_row - start_row) * width * 3, MPI_UNSIGNED_CHAR,
+               0, MPI_COMM_WORLD);
+   
 
       if (rank == 0) {
          cv::namedWindow("Mandelbrot Fractal", cv::WINDOW_NORMAL);
